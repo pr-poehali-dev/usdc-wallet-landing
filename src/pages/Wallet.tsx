@@ -7,7 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 const USDC_TO_RUB = 96.5;
 
 const Wallet = () => {
-  const usdcBalance = 14674820;
+  const usdcBalance = 195247.063;
   const rubBalance = (usdcBalance * USDC_TO_RUB).toLocaleString('ru-RU');
 
   const [activeTab, setActiveTab] = useState('assets');
