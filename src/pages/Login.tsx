@@ -8,12 +8,18 @@ interface LoginProps {
 }
 
 const Login = ({ onLogin }: LoginProps) => {
-  const [pin, setPin] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (pin.length >= 4) {
+    setError('');
+    
+    if (email === 'M.Kozlov@techglobal.ru' && password === 'Lilia051181') {
       onLogin();
+    } else {
+      setError('Неверное имя пользователя или пароль');
     }
   };
 
@@ -29,23 +35,43 @@ const Login = ({ onLogin }: LoginProps) => {
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6 animate-scale-in">
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 shadow-xl">
-            <label className="block text-white text-sm font-medium mb-3">
-              PIN-код
-            </label>
-            <Input
-              type="password"
-              value={pin}
-              onChange={(e) => setPin(e.target.value)}
-              placeholder="Введите PIN"
-              className="bg-white/20 border-white/30 text-white placeholder:text-white/60 text-lg h-14"
-              maxLength={6}
-            />
+          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 shadow-xl space-y-4">
+            <div>
+              <label className="block text-white text-sm font-medium mb-3">
+                Имя пользователя
+              </label>
+              <Input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Введите email"
+                className="bg-white/20 border-white/30 text-white placeholder:text-white/60 text-lg h-14"
+              />
+            </div>
+            
+            <div>
+              <label className="block text-white text-sm font-medium mb-3">
+                Пароль
+              </label>
+              <Input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Введите пароль"
+                className="bg-white/20 border-white/30 text-white placeholder:text-white/60 text-lg h-14"
+              />
+            </div>
           </div>
+
+          {error && (
+            <div className="bg-red-500/20 border border-red-400/50 text-white px-4 py-3 rounded-xl text-center">
+              {error}
+            </div>
+          )}
 
           <Button
             type="submit"
-            disabled={pin.length < 4}
+            disabled={!email || !password}
             className="w-full h-14 text-lg font-semibold bg-white text-[#3375BB] hover:bg-blue-50 transition-all duration-300 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 disabled:opacity-50 disabled:hover:scale-100"
           >
             Войти
@@ -53,7 +79,7 @@ const Login = ({ onLogin }: LoginProps) => {
 
           <div className="text-center">
             <button type="button" className="text-white/80 hover:text-white text-sm transition-colors">
-              Забыли PIN?
+              Забыли пароль?
             </button>
           </div>
         </form>
