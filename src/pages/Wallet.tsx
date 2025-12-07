@@ -26,8 +26,8 @@ const Wallet = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="bg-gradient-to-br from-[#3375BB] to-[#1E3A8A] text-white px-6 pt-8 pb-24 rounded-b-3xl">
+    <div className="min-h-screen bg-[#0A1929]">
+      <div className="bg-gradient-to-br from-[#1E3A8A] to-[#0D2847] text-white px-6 pt-8 pb-24">
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-2xl font-bold">Кошелек</h1>
           <button className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30 transition-colors">
@@ -75,7 +75,7 @@ const Wallet = () => {
       </div>
 
       <div className="px-6 -mt-16">
-        <Card className="bg-white shadow-xl rounded-2xl p-6">
+        <Card className="bg-[#132F4C] border-[#1E3A8A] shadow-xl rounded-2xl p-6">
           <Tabs value={activeTab} onValueChange={setActiveTab}>
             <TabsList className="grid w-full grid-cols-2 mb-6">
               <TabsTrigger value="assets" className="data-[state=active]:bg-[#3375BB] data-[state=active]:text-white">
@@ -90,21 +90,21 @@ const Wallet = () => {
               {tokens.map((token) => (
                 <div
                   key={token.symbol}
-                  className="flex items-center justify-between p-4 rounded-xl hover:bg-gray-50 transition-colors cursor-pointer"
+                  className="flex items-center justify-between p-4 rounded-xl hover:bg-[#1E3A8A]/30 transition-colors cursor-pointer"
                 >
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#3375BB] to-[#1E3A8A] flex items-center justify-center text-2xl">
                       {token.icon}
                     </div>
                     <div>
-                      <p className="font-semibold text-gray-900">{token.symbol}</p>
-                      <p className="text-sm text-gray-500">{token.name}</p>
+                      <p className="font-semibold text-white">{token.symbol}</p>
+                      <p className="text-sm text-blue-300">{token.name}</p>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="font-semibold text-gray-900">{token.balance}</p>
+                    <p className="font-semibold text-white">{token.balance}</p>
                     <div className="flex items-center gap-2">
-                      <p className="text-sm text-gray-500">{token.value}</p>
+                      <p className="text-sm text-blue-300">{token.value}</p>
                       <span className="text-xs text-green-600 font-medium">{token.change}</span>
                     </div>
                   </div>
@@ -116,7 +116,7 @@ const Wallet = () => {
               {transactions.map((tx) => (
                 <div
                   key={tx.id}
-                  className="flex items-center justify-between p-4 rounded-xl hover:bg-gray-50 transition-colors"
+                  className="flex items-center justify-between p-4 rounded-xl hover:bg-[#1E3A8A]/30 transition-colors"
                 >
                   <div className="flex items-center gap-4">
                     <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
@@ -129,11 +129,11 @@ const Wallet = () => {
                       />
                     </div>
                     <div>
-                      <p className="font-semibold text-gray-900">
+                      <p className="font-semibold text-white">
                         {tx.type === 'receive' ? 'Получено' : 'Отправлено'}
                       </p>
-                      <p className="text-sm text-gray-500">{tx.date}</p>
-                      <p className="text-xs text-gray-400">
+                      <p className="text-sm text-blue-300">{tx.date}</p>
+                      <p className="text-xs text-blue-400">
                         {tx.type === 'receive' ? `От ${tx.from}` : `Кому ${tx.to}`}
                       </p>
                     </div>
@@ -150,21 +150,21 @@ const Wallet = () => {
         </Card>
       </div>
 
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-6 py-4">
+      <div className="fixed bottom-0 left-0 right-0 bg-[#132F4C] border-t border-[#1E3A8A] px-6 py-4">
         <div className="grid grid-cols-4 gap-4 max-w-md mx-auto">
           <button className="flex flex-col items-center gap-1 text-[#3375BB]">
             <Icon name="Wallet" size={24} />
             <span className="text-xs font-medium">Кошелек</span>
           </button>
-          <button className="flex flex-col items-center gap-1 text-gray-400 hover:text-gray-600">
+          <button className="flex flex-col items-center gap-1 text-blue-400 hover:text-blue-300">
             <Icon name="TrendingUp" size={24} />
             <span className="text-xs font-medium">Рынок</span>
           </button>
-          <button className="flex flex-col items-center gap-1 text-gray-400 hover:text-gray-600">
+          <button className="flex flex-col items-center gap-1 text-blue-400 hover:text-blue-300">
             <Icon name="Zap" size={24} />
             <span className="text-xs font-medium">DApps</span>
           </button>
-          <button className="flex flex-col items-center gap-1 text-gray-400 hover:text-gray-600">
+          <button className="flex flex-col items-center gap-1 text-blue-400 hover:text-blue-300">
             <Icon name="User" size={24} />
             <span className="text-xs font-medium">Профиль</span>
           </button>
